@@ -13,21 +13,40 @@ const AGE_CONSTRAINTS = {
   max: 100,
 };
 
-const employeeNameCheck = check('employeeName', 'Name is missing').trim().isLength({ min: MIN_STRING_LENGTH })
-.withMessage(`Employee Name must have more than ${MIN_STRING_LENGTH} characters!`)
-.bail();
-
-const ageCheck = check('age', 'Age is missing!').isInt({ min: AGE_CONSTRAINTS.min, max: AGE_CONSTRAINTS.max }).withMessage(`Age must be a number between ${AGE_CONSTRAINTS.min} - ${AGE_CONSTRAINTS.max}!`)
-.bail();
+const validationMessages = {
+  employeeId: {
+    invalid: 'EmployeeId is invalid!',
+  },
+  age: {
+    missing: 'Age is required!',
+    invalid: `Age must be a number between ${AGE_CONSTRAINTS.min} - ${AGE_CONSTRAINTS.max}!`,
+  },
+  employeeName: {
+    missing: 'Name is required!',
+    invalid: `Employee Name must have more than ${MIN_STRING_LENGTH} characters!`,
+  },
+  email: {
+    invalid: 'Provided email is invalid!',
+  },
+  salaryAmount: {
+    invalid: 'Salary must be a valid number!',
+  },
+};
 
 export const validationChecks = {
-  employeeIdParam: param('employeeId').exists().isMD5().withMessage('Invalid employeeId!'),
-  employeeName: employeeNameCheck.optional(),
-  employeeNameRequired: employeeNameCheck.notEmpty(),
-  age: ageCheck.optional(),
-  ageRequired: ageCheck.notEmpty(),
-  email: check('email').optional().isEmail().withMessage('Provided email is invalid!'),
-  salaryAmount: check('salaryAmount').isInt().withMessage('Salary must be a valid number!')
+  employeeIdParam: param('employeeId').exists().isMD5().withMessage(validationMessages.employeeId.invalid),
+  employeeName: check('employeeName', validationMessages.employeeName.missing).trim().isLength({ min: MIN_STRING_LENGTH })
+  .withMessage(validationMessages.employeeName.invalid)
+.optional(),
+  employeeNameRequired: check('employeeName', validationMessages.employeeName.missing).trim().isLength({ min: MIN_STRING_LENGTH })
+  .withMessage(validationMessages.employeeName.invalid)
+.notEmpty()
+.bail(),
+  age: check('age', validationMessages.age.missing).isInt(AGE_CONSTRAINTS).withMessage(validationMessages.age.invalid).optional(),
+  ageRequired: check('age', validationMessages.age.missing).isInt(AGE_CONSTRAINTS).withMessage(validationMessages.age.invalid).notEmpty()
+.bail(),
+  email: check('email').optional().isEmail().withMessage(validationMessages.email.invalid),
+  salaryAmount: check('salaryAmount').isInt().withMessage(validationMessages.salaryAmount.invalid)
 .custom((value = null) => {
   if (!isNumeric(value)) {
     throw new Error('Salary amount is invalid!');
@@ -45,6 +64,14 @@ export const validationChecks = {
   }).optional(),
 };
 
+export const postReqValidations = [
+  validationChecks.employeeNameRequired,
+  validationChecks.ageRequired,
+  validationChecks.email,
+  validationChecks.salaryAmount,
+  validationChecks.degreeDetails,
+];
+
 // eslint-disable-next-line consistent-return
 export const validateInput = async (req, res, next) => {
     // validationResult function checks for errors & returns an object
@@ -57,11 +84,3 @@ export const validateInput = async (req, res, next) => {
 
     next();
 };
-
-export const postReqValidations = [
-  validationChecks.employeeNameRequired,
-  validationChecks.ageRequired,
-  validationChecks.email,
-  validationChecks.salaryAmount,
-  validationChecks.degreeDetails,
-];

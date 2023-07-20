@@ -1,10 +1,13 @@
 import express from 'express';
+import logger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './routes';
 import STATUS_CODES from './utils/http/statusCodes';
 import HTTP_STANDARD_RESPONSES from './utils/http/responses';
 
 const app = express();
+
+app.use(logger());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

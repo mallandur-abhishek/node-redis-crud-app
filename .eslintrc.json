@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "max-len": [
+            0,
+            120,
+            {
+                "ignoreRegExpLiterals": true,
+                "ignoreTemplateLiterals": true
+            }
+        ],
+        "react/jsx-no-undef": [
+            2,
+            {
+                "allowGlobals": false
+            }
+        ],
+        "indent": [0, 4],
+        "arrow-parens": ["error", "as-needed"]
+    }
+}

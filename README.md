@@ -34,9 +34,10 @@ The above will get you a copy of the project up and running on your local machin
   1. body-parser
   2. md5
   3. dotenv
-  4. debug
-  5. express-validator
-  6. eslint
+  4. morgan
+  5. debug
+  6. express-validator
+  7. eslint
 ```
 
 ## API Endpoints
