@@ -47,11 +47,11 @@ All API endpoints return a status code of 200 for successful calls and 400 inclu
 ```
 | EndPoint                                |   Functionality                      |
 | --------------------------------------- | ------------------------------------ |
-| POST /employees                         | Create Employee                      |
-| GET /employees/:employeeId              | Get Employee                         |
-| GET /employees                          | Get all Employees                    |
-| PUT /employees/:employeeId              | Update Employee                      |
-| DELETE /employees/:employeeId           | Delete Employee                      |
+| POST /api/employees                     | Create Employee                      |
+| GET /api/employees/:employeeId          | Get Employee                         |
+| GET /api/employees                      | Get all Employees                    |
+| PUT /api/employees/:employeeId          | Update Employee                      |
+| DELETE /api/employees/:employeeId       | Delete Employee                      |
 ```
 
 ## Create Employee Example

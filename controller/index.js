@@ -2,11 +2,11 @@ import connectToRedis from '../redis';
 import * as Validations from './validations';
 import HTTP_STANDARD_RESPONSES from '../utils/http/responses';
 import STATUS_CODES from '../utils/http/statusCodes';
-import createEmployee from './handlers/create';
-import getEmployees from './handlers/getAll';
-import getEmployee from './handlers/get';
-import updateEmployeeDetails from './handlers/update';
-import deleteEmployee from './handlers/delete';
+import createEmployee from './services/create';
+import getEmployees from './services/getAll';
+import getEmployee from './services/get';
+import updateEmployeeDetails from './services/update';
+import deleteEmployee from './services/delete';
 import { checkIfUserExists } from './utils';
 
 // Redis Connection

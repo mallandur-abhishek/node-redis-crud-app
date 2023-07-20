@@ -7,7 +7,7 @@ const router = express.Router();
 Route to get employee using id
 */
 router.get(
-  '/employees/:employeeId',
+  '/api/employees/:employeeId',
   [appController.validationChecks.employeeIdParam],
   appController.validateInput,
   appController.getUser,
@@ -17,7 +17,7 @@ router.get(
 Route to get all employees
 */
 router.get(
-  '/employees',
+  '/api/employees',
   appController.getUsers,
 );
 
@@ -25,7 +25,7 @@ router.get(
 Route to Add New User.
 */
 router.post(
-  '/employees',
+  '/api/employees',
   appController.postReqValidations,
   appController.validateInput,
   appController.addUser,
@@ -35,7 +35,7 @@ router.post(
 Route to get Update user
 */
 router.put(
-  '/employees/:employeeId',
+  '/api/employees/:employeeId',
   [
     appController.validationChecks.employeeIdParam,
     appController.validationChecks.email,
@@ -52,7 +52,7 @@ router.put(
 Route to get Delete Each user
 */
 router.delete(
-  '/employees/:employeeId',
+  '/api/employees/:employeeId',
   [appController.validationChecks.employeeIdParam],
   appController.validateInput,
   appController.checkIfUserExists,
