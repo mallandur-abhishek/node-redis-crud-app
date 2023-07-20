@@ -29,6 +29,16 @@ The above will get you a copy of the project up and running on your local machin
   3. ExpressJS
 ```
 
+## Packages
+```
+  1. body-parser
+  2. md5
+  3. dotenv
+  4. debug
+  5. express-validator
+  6. eslint
+```
+
 ## API Endpoints
 
 All API endpoints return a status code of 200 for successful calls and 400 including an error object for unsuccessful calls.

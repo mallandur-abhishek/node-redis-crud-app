@@ -30,7 +30,7 @@ const HTTP_STANDARD_RESPONSES = {
         status: STATUS_CODES.INTERNAL_SERVER_ERROR,
     },
     ENDPOINT_DOES_NOT_EXIST: {
-        message: 'Endpoint does not exist!',
+        message: 'Method/Endpoint is not supported!',
         status: STATUS_CODES.NOT_FOUND,
     },
 };
