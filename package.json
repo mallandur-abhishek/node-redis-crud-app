@@ -1,0 +1,34 @@
+{
+    "author": "Abhishek Mallandur",
+    "name": "node-redis-api",
+    "version": "0.0.0",
+    "private": true,
+    "engines": {
+        "node": "8.9.4"
+    },
+    "scripts": {
+        "dev": "nodemon --inspect --es-module-specifier-resolution=node ./app.js --ignore public/",
+        "start": "node --es-module-specifier-resolution=node ./app.js",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "debug": "^4.3.4",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "express-validator": "^7.0.1",
+        "md5": "^2.3.0",
+        "redis": "^4.6.7"
+    },
+    "devDependencies": {
+        "eslint": "^8.45.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "nodemon": "^1.19.4"
+    },
+    "type": "module"
+}
